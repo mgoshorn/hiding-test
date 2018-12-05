@@ -42,9 +42,10 @@
         <div class="box to-hide"></div>
     </div>
 
-    <button id="my-button">Click Me</button>
+    <button id="show-button">Show</button>
+    <button id="hide-button">Hide</button>
     <script>
-        const click = function() {
+        const hide = function() {
             const hideables = document.querySelectorAll('.to-hide');
             console.log(hideables);
             for(let i = 0; i < hideables.length; i++) {
@@ -53,7 +54,17 @@
             }
         }
 
-        document.getElementById('my-button').addEventListener('click', click);
+        const show = function() {
+            const hideables = document.querySelectorAll('.to-hide');
+            console.log(hideables);
+            for(let i = 0; i < hideables.length; i++) {
+                const toHide = hideables[i];
+                toHide.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('hide-button').addEventListener('click', hide);
+        document.getElementById('show-button').addEventListener('click', show);
     </script>
 </body>
 </html>
