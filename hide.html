@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div#container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+        }
+
+        div.box {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            border: 2px solid darkgrey;
+        }
+
+        div:nth-child(even) {
+            background: grey;
+        }
+        div:nth-child(odd) {
+            background: lightgrey;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box to-hide"></div>
+        <div class="box to-hide"></div>
+    </div>
+
+    <button id="my-button">Click Me</button>
+    <script>
+        const click = function() {
+            const hideables = document.querySelectorAll('.to-hide');
+            console.log(hideables);
+            for(let i = 0; i < hideables.length; i++) {
+                const toHide = hideables[i];
+                toHide.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('my-button').addEventListener('click', click);
+    </script>
+</body>
+</html>
