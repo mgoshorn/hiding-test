@@ -13,10 +13,20 @@
             width: 300px;
         }
 
-        div.box {
+        .outer-box {
             box-sizing: border-box;
             width: 100px;
             height: 100px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;   
+        }
+
+        div.box {
+            box-sizing: border-box;
+            width: 50%;
+            height: 50%;
             border: 2px solid darkgrey;
         }
 
@@ -30,16 +40,33 @@
         .hidden {
             display: none;
         }
+
+        .outer-box.error {
+            background: lightpink;
+        }
     </style>
 </head>
 <body>
     <div id="container">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box to-hide"></div>
-        <div class="box to-hide"></div>
+        <div class="outer-box">
+            <div class="box"></div>
+        </div>
+        <div class="outer-box">
+            <div class="box"></div>
+        </div>
+        <div class="outer-box">
+            <div class="box"></div>
+        </div>
+        <div class="outer-box">
+            <div class="box"></div>
+        </div>
+        <!-- These ones the parent class has a 'to-hide' class and 'error' class -->
+        <div class="outer-box to-hide error">
+            <div class="box"></div>
+        </div>
+        <div class="outer-box to-hide error">
+            <div class="box"></div>
+        </div>
     </div>
 
     <button id="show-button">Show</button>
@@ -54,7 +81,12 @@
             // Loop over elements, add hidden class to each one
             for(let i = 0; i < hideables.length; i++) {
                 const toHide = hideables[i];
-                toHide.classList.add('hidden');
+
+                // remove error from outer box, changes color of containing element
+                toHide.classList.remove('error');
+
+                // add hidden to inner box, hides inner div
+                toHide.children[0].classList.add('hidden');
             }
         }
 
@@ -67,7 +99,12 @@
             // Loop over elements, remove hidden class from each one
             for(let i = 0; i < hideables.length; i++) {
                 const toHide = hideables[i];
-                toHide.classList.remove('hidden');
+
+                // Adds error to outer box, changing the color back to pink
+                toHide.classList.add('error');
+
+                // Removes hidden from inner box, revealing content again
+                toHide.children[0].classList.remove('hidden');
             }
         }
 
