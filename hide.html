@@ -45,9 +45,13 @@
     <button id="show-button">Show</button>
     <button id="hide-button">Hide</button>
     <script>
+
         const hide = function() {
+            // Get elements with class to-hide
             const hideables = document.querySelectorAll('.to-hide');
             console.log(hideables);
+
+            // Loop over elements, add hidden class to each one
             for(let i = 0; i < hideables.length; i++) {
                 const toHide = hideables[i];
                 toHide.classList.add('hidden');
@@ -55,14 +59,19 @@
         }
 
         const show = function() {
+
+            // Get elements with class to-hide
             const hideables = document.querySelectorAll('.to-hide');
             console.log(hideables);
+
+            // Loop over elements, remove hidden class from each one
             for(let i = 0; i < hideables.length; i++) {
                 const toHide = hideables[i];
                 toHide.classList.remove('hidden');
             }
         }
 
+        // Bind functions to buttons
         document.getElementById('hide-button').addEventListener('click', hide);
         document.getElementById('show-button').addEventListener('click', show);
     </script>
